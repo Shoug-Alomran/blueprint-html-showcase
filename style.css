@@ -10,6 +10,7 @@
   --accent-soft: #f0cdb5;
   --teal: #2f7066;
   --shadow: 0 22px 60px rgba(57, 38, 24, 0.12);
+  --radius-xl: 36px;
   --radius-lg: 28px;
   --radius-md: 20px;
   --radius-sm: 14px;
@@ -26,6 +27,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   font-family: "Manrope", sans-serif;
   color: var(--text);
   background:
@@ -37,6 +39,17 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(47, 112, 102, 0.35);
+  outline-offset: 3px;
 }
 
 .page-shell {
@@ -95,6 +108,14 @@ a {
 }
 
 .topbar-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid rgba(31, 36, 48, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
   color: var(--muted);
   font-weight: 600;
 }
@@ -388,6 +409,8 @@ h3 {
 .project-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-height: 46px;
   margin-top: 10px;
   padding: 10px 14px;
   border-radius: 999px;
@@ -468,13 +491,13 @@ h3 {
 .preview-pane-before::before {
   background:
     linear-gradient(180deg, rgba(23, 27, 35, 0.08), rgba(23, 27, 35, 0.28)),
-    url("docs/assets/before/computer-view/home-page-before.png") top center / cover no-repeat;
+    url("docs/assets/glow-of-pink/before/computer-view/home-page-before.png") top center / cover no-repeat;
 }
 
 .preview-pane-after::before {
   background:
     linear-gradient(180deg, rgba(23, 27, 35, 0.02), rgba(23, 27, 35, 0.22)),
-    url("docs/assets/after/computer-view/home-page-after.png") top center / cover no-repeat;
+    url("docs/assets/glow-of-pink/after/computer-view/home-page-after.png") top center / cover no-repeat;
 }
 
 .preview-pane span {
@@ -828,15 +851,24 @@ h3 {
     margin-bottom: 48px;
   }
 
+  .hero-home-grid {
+    gap: 22px;
+  }
+
   .hero-stage {
     grid-template-columns: 1fr;
     min-height: 0;
+    gap: 14px;
   }
 
   .stage-card-primary,
   .showcase-card-wide {
     grid-row: auto;
     grid-column: auto;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
   }
 
   .snapshot-before,
@@ -865,27 +897,132 @@ h3 {
 
 @media (max-width: 640px) {
   .page-shell {
-    width: min(100% - 20px, 100%);
-    margin: 10px auto 24px;
+    width: calc(100% - 16px);
+    margin: 8px auto 20px;
   }
 
   .hero,
-  .section {
-    padding: 22px 18px;
-    border-radius: 22px;
+  .section,
+  .site-footer {
+    padding: 20px 16px;
+    border-radius: 20px;
   }
 
   .topbar {
     flex-direction: column;
     align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .brand {
+    font-size: 0.88rem;
+  }
+
+  .topbar-links {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .topbar-links a {
+    width: 100%;
+    text-align: center;
   }
 
   .hero-copy {
     font-size: 0.98rem;
+    margin-top: 16px;
+  }
+
+  h1 {
+    font-size: clamp(2.15rem, 11vw, 3.4rem);
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
   }
 
   .button {
     width: 100%;
+  }
+
+  .hero-actions,
+  .library-links,
+  .process-grid,
+  .showcase-grid,
+  .preview-stack {
+    gap: 12px;
+  }
+
+  .preview-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stage,
+  .showcase-card-large {
+    gap: 12px;
+  }
+
+  .stage-card,
+  .showcase-card,
+  .info-card,
+  .library-card,
+  .license-card,
+  .stage-metric {
+    border-radius: 18px;
+  }
+
+  .stage-card,
+  .showcase-card,
+  .info-card,
+  .library-card,
+  .stage-metric {
+    padding: 20px;
+  }
+
+  .stage-card,
+  .stage-metric,
+  .preview-pane,
+  .section-split .library-card {
+    min-height: 0;
+  }
+
+  .stage-metric strong {
+    font-size: clamp(2rem, 13vw, 3rem);
+  }
+
+  .project-link {
+    width: 100%;
+  }
+
+  .project-link + .project-link {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .project-points {
+    margin: 16px 0 18px;
+    padding-left: 16px;
+    line-height: 1.7;
+  }
+
+  .library-card {
+    padding: 18px;
+  }
+
+  .site-footer {
+    gap: 18px;
+  }
+
+  .license-card {
+    padding: 12px;
+  }
+
+  .license-card img {
+    max-height: none;
   }
 
   .snapshot-card,
