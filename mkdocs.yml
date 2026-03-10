@@ -1,0 +1,20 @@
+site_name: Blueprint HTML Showcase
+site_description: Portfolio showcase of HTML marketing websites and redesign case studies by Blueprint by ShougTech.
+site_author: Blueprint by ShougTech
+repo_name: shougalomran/blueprint-html-showcase
+repo_url: https://github.com/shougalomran/blueprint-html-showcase
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: mkdocs
+  favicon: assets/google.png
+  logo: assets/google.png
+
+nav:
+  - Home: index.html
+  - Glow of Pink Case Study: projects/glow-of-pink/index.html
+  - Glow of Pink Poster: projects/glow-of-pink/glow-of-pink-casestudy-poster.html
+  - CS316 Case Study: projects/cs316/index.html
+  - CS316 Poster: projects/cs316/cs316-poster.html

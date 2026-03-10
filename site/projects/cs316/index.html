@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS316 Project | Blueprint Showcase</title>
+    <link rel="icon" type="image/png" href="../../assets/google.png" />
+    <link rel="shortcut icon" href="../../assets/google.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <section class="hero">
+        <nav class="topbar">
+          <a class="brand" href="../../index.html">Blueprint Showcase</a>
+          <div class="topbar-links">
+            <a href="../../index.html">Home</a>
+            <a href="#overview">Overview</a>
+            <a href="#gallery">Gallery</a>
+          </div>
+        </nav>
+
+        <div class="hero-content">
+          <p class="eyebrow">CS316 Project</p>
+          <h1>A polished website showcase presented through desktop screens and clear visual proof.</h1>
+          <p class="hero-copy">
+            This case study presents the project through laptop-view screens that highlight the homepage, theme styling, navigation behavior, footer treatment, and key interaction points in a clean portfolio format.
+          </p>
+          <div class="hero-link-group">
+            <a class="hero-link-card" href="https://layanalnasser.github.io/CS316-Mental-Health-AI-Project/">
+              <span class="hero-link-label">Visit Live Website</span>
+              <strong>CS316 Mental Health AI Project</strong>
+            </a>
+            <a class="hero-link-card" href="./cs316-poster.html">
+              <span class="hero-link-label">Open HTML Poster</span>
+              <strong>CS316 Showcase Poster</strong>
+            </a>
+            <div class="hero-link-note">Click any screenshot below to open a larger view and move through the gallery.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="overview">
+        <div class="section-heading">
+          <p class="eyebrow">Project Overview</p>
+          <h2>A new website project added to the public portfolio.</h2>
+        </div>
+        <div class="intro-grid">
+          <article class="info-card">
+            <h3>Current Screens</h3>
+            <p>This project currently includes laptop-view screenshots only, giving a clear desktop-focused overview of the final interface and layout direction.</p>
+          </article>
+          <article class="info-card">
+            <h3>Interface Focus</h3>
+            <p>The available captures emphasize layout quality, navigation states, theme presentation, footer design, and contact-focused interactions.</p>
+          </article>
+          <article class="info-card">
+            <h3>Portfolio Role</h3>
+            <p>It expands the public portfolio with a second website showcase and a standalone HTML poster that can be shared as a polished presentation piece.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Laptop Gallery</p>
+          <h2>Desktop screenshots showing the core pages and interface states.</h2>
+        </div>
+        <div class="gallery-stack">
+          <article class="gallery-card gallery-card-after">
+            <div class="gallery-copy">
+              <span class="project-tag compare-tag">Website Showcase</span>
+              <h3>Desktop interface views</h3>
+              <p>The screenshots below show the homepage, dark mode, contact CTA, footer design, and several navigation-state views.</p>
+            </div>
+            <div class="gallery-grid gallery-grid-after">
+              <figure class="gallery-shot tall-shot"><img src="../../assets/cs316/laptop-view/home-page-view-laptop.jpeg" alt="CS316 project homepage laptop view main screen" /></figure>
+              <figure class="gallery-shot"><img src="../../assets/cs316/laptop-view/home-page-view-laptop-2.png" alt="CS316 project homepage laptop view secondary screen" /></figure>
+              <figure class="gallery-shot"><img src="../../assets/cs316/laptop-view/dark-mode-laptop-view.png" alt="CS316 project dark mode laptop view" /></figure>
+              <figure class="gallery-shot"><img src="../../assets/cs316/laptop-view/contact-button-laptop-view.png" alt="CS316 project contact button laptop view" /></figure>
+              <figure class="gallery-shot"><img src="../../assets/cs316/laptop-view/specific-page-both-nav-displayed-laptop-view.png" alt="CS316 project page with both navigation areas displayed" /></figure>
+              <figure class="gallery-shot"><img src="../../assets/cs316/laptop-view/specific-page-left-nav-shown-laptop-view.png" alt="CS316 project page with left navigation shown" /></figure>
+              <figure class="gallery-shot"><img src="../../assets/cs316/laptop-view/specific-page-nav-hidden-laptop-view.png" alt="CS316 project page with navigation hidden" /></figure>
+              <figure class="gallery-shot"><img src="../../assets/cs316/laptop-view/specific-page-right-side-nav-displayed-laptop-view.png" alt="CS316 project page with right-side navigation displayed" /></figure>
+              <figure class="gallery-shot wide-shot"><img src="../../assets/cs316/laptop-view/footer-view-laptop.png" alt="CS316 project footer laptop view" /></figure>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="lightbox" id="image-lightbox" hidden>
+      <button class="lightbox-nav lightbox-nav-prev" type="button" aria-label="View previous image">Prev</button>
+      <button class="lightbox-nav lightbox-nav-next" type="button" aria-label="View next image">Next</button>
+      <button class="lightbox-close" type="button" aria-label="Close expanded image">Close</button>
+      <div class="lightbox-stage">
+        <div class="lightbox-badge" aria-live="polite" hidden></div>
+        <img class="lightbox-image" src="" alt="" />
+      </div>
+    </div>
+
+    <script>
+      const lightbox = document.getElementById("image-lightbox");
+      const lightboxImage = lightbox.querySelector(".lightbox-image");
+      const lightboxBadge = lightbox.querySelector(".lightbox-badge");
+      const closeButton = lightbox.querySelector(".lightbox-close");
+      const prevButton = lightbox.querySelector(".lightbox-nav-prev");
+      const nextButton = lightbox.querySelector(".lightbox-nav-next");
+      const expandableImages = Array.from(document.querySelectorAll(".gallery-shot img"));
+      let currentImageIndex = -1;
+
+      function renderLightboxImage(index) {
+        const image = expandableImages[index];
+        if (!image) {
+          return;
+        }
+
+        currentImageIndex = index;
+        lightboxImage.src = image.getAttribute("src");
+        lightboxImage.alt = image.alt;
+        lightboxBadge.textContent = "Project View";
+        lightboxBadge.hidden = false;
+      }
+
+      function openLightbox(image) {
+        renderLightboxImage(expandableImages.indexOf(image));
+        lightbox.hidden = false;
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+      }
+
+      function closeLightbox() {
+        lightbox.hidden = true;
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        lightboxBadge.textContent = "";
+        lightboxBadge.hidden = true;
+        currentImageIndex = -1;
+        document.body.classList.remove("lightbox-open");
+      }
+
+      function showNextImage(step) {
+        if (currentImageIndex === -1 || expandableImages.length === 0) {
+          return;
+        }
+
+        const nextIndex = (currentImageIndex + step + expandableImages.length) % expandableImages.length;
+        renderLightboxImage(nextIndex);
+      }
+
+      expandableImages.forEach((image) => {
+        image.classList.add("expandable-image");
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-label", `${image.alt}. Expand image`);
+
+        image.addEventListener("click", () => openLightbox(image));
+        image.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openLightbox(image);
+          }
+        });
+      });
+
+      closeButton.addEventListener("click", closeLightbox);
+      prevButton.addEventListener("click", () => showNextImage(-1));
+      nextButton.addEventListener("click", () => showNextImage(1));
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox || event.target.classList.contains("lightbox-stage")) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !lightbox.hidden) {
+          closeLightbox();
+        }
+        if (event.key === "ArrowLeft" && !lightbox.hidden) {
+          showNextImage(-1);
+        }
+        if (event.key === "ArrowRight" && !lightbox.hidden) {
+          showNextImage(1);
+        }
+      });
+
+      lightbox.setAttribute("aria-hidden", "true");
+    </script>
+  </body>
+</html>
