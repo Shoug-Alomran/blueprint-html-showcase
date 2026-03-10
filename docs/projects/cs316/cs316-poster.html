@@ -13,8 +13,9 @@
   body {
     background: #0d0d0d;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     min-height: 100vh;
     padding: 40px 20px;
     font-family: 'DM Sans', sans-serif;
@@ -22,6 +23,7 @@
 
   .poster {
     width: 900px;
+    max-width: 100%;
     background: #f5eeea;
     border-radius: 4px;
     overflow: hidden;
@@ -68,10 +70,10 @@
 
   .poster-header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 54px;
+    font-size: clamp(40px, 4.6vw, 54px);
     font-weight: 900;
     color: white;
-    line-height: 1.05;
+    line-height: 1.12;
     margin-bottom: 18px;
     position: relative;
     z-index: 1;
@@ -462,6 +464,60 @@
   .screenshot-hero .ss-img { max-height: 320px; }
   .ss-row-2 .ss-img { max-height: 200px; }
   .ss-row-3 .ss-img { max-height: 150px; }
+  .license-footer {
+    width: 900px;
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 20px 24px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(220px, 300px);
+    gap: 20px;
+    align-items: center;
+  }
+  .license-footer-copy h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    line-height: 1.22;
+    margin: 8px 0 10px;
+    color: white;
+  }
+  .license-footer-copy p {
+    color: rgba(255,255,255,0.72);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  .license-footer-eyebrow {
+    color: #e87d84;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .license-footer-card {
+    margin: 0;
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .license-footer-card img {
+    display: block;
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fff;
+  }
+  .license-footer-card figcaption {
+    margin-top: 10px;
+    text-align: center;
+    color: rgba(255,255,255,0.68);
+    font-size: 13px;
+    font-weight: 600;
+  }
 
 </style>
 </head>
@@ -724,5 +780,16 @@
   <div class="diagonal-accent"></div>
 
 </div>
+<footer class="license-footer">
+  <div class="license-footer-copy">
+    <div class="license-footer-eyebrow">Licensed Freelance Business</div>
+    <h2>Blueprint by ShougTech operates with an official freelance license.</h2>
+    <p>This certificate is included as a credibility reference for clients, collaborators, and businesses reviewing this portfolio presentation.</p>
+  </div>
+  <figure class="license-footer-card">
+    <img src="../../assets/freelance-certificate-license.png" alt="Blueprint by ShougTech freelance certificate license">
+    <figcaption>Official freelance certificate license</figcaption>
+  </figure>
+</footer>
 </body>
 </html>

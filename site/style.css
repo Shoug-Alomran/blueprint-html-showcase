@@ -108,6 +108,10 @@ a {
   padding: 0 0 32px;
 }
 
+.hero:not(.hero-home):not(.hero-poster) .hero-content {
+  max-width: 1040px;
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--teal);
@@ -126,9 +130,9 @@ strong {
 
 h1 {
   margin: 0;
-  font-size: clamp(2.7rem, 6vw, 4.8rem);
-  line-height: 0.96;
-  letter-spacing: -0.05em;
+  font-size: clamp(2.7rem, 5.4vw, 4.4rem);
+  line-height: 1.03;
+  letter-spacing: -0.04em;
 }
 
 h2 {
@@ -541,6 +545,60 @@ h3 {
   display: block;
   margin-bottom: 8px;
   font-size: 1.05rem;
+}
+
+.site-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 360px);
+  gap: 24px;
+  margin-top: 24px;
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top right, rgba(211, 111, 67, 0.14), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.96));
+  border: 1px solid rgba(94, 73, 55, 0.08);
+  box-shadow: 0 22px 46px rgba(57, 38, 24, 0.08);
+  align-items: center;
+}
+
+.site-footer-copy h2 {
+  margin: 8px 0 12px;
+}
+
+.site-footer-copy p:last-child {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.license-card {
+  margin: 0;
+  padding: 16px;
+  border-radius: 24px;
+  background: rgba(31, 36, 48, 0.04);
+  border: 1px solid rgba(94, 73, 55, 0.1);
+  box-shadow: 0 12px 28px rgba(57, 38, 24, 0.08);
+}
+
+.license-card img {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.license-card figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.site-footer-compact {
+  margin-top: 24px;
 }
 
 .poster-board {
@@ -976,6 +1034,7 @@ h3 {
   .poster-layout-grid,
   .comparison-snapshot,
   .compare-layout,
+  .site-footer,
   .gallery-grid-before,
   .gallery-grid-after,
   .device-gallery-grid-tablet,
@@ -1043,6 +1102,12 @@ h3 {
 
   .hero-copy {
     font-size: 0.98rem;
+  }
+
+  h1 {
+    font-size: clamp(2.3rem, 11vw, 3.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
   }
 
   .button {

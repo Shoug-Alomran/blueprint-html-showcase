@@ -27,14 +27,16 @@
     font-family: 'DM Sans', sans-serif;
     color: var(--text);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     min-height: 100vh;
     padding: 32px 16px;
   }
 
   .poster {
     width: 1080px;
+    max-width: 100%;
     background: var(--mid);
     border-radius: 24px;
     overflow: hidden;
@@ -103,10 +105,10 @@
 
   .headline {
     font-family: 'Syne', sans-serif;
-    font-size: 48px;
+    font-size: clamp(36px, 4.2vw, 48px);
     font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    line-height: 1.16;
+    letter-spacing: -0.01em;
     color: #fff;
     position: relative;
     z-index: 1;
@@ -340,6 +342,59 @@
     letter-spacing: 0.04em;
     opacity: 0.8;
   }
+  .license-footer {
+    width: 1080px;
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 20px 24px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(220px, 320px);
+    gap: 20px;
+    align-items: center;
+  }
+  .license-footer-copy h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    line-height: 1.18;
+    margin: 8px 0 10px;
+  }
+  .license-footer-copy p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  .license-footer-eyebrow {
+    color: var(--teal);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .license-footer-card {
+    margin: 0;
+    padding: 12px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .license-footer-card img {
+    display: block;
+    width: 100%;
+    max-height: 190px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fff;
+  }
+  .license-footer-card figcaption {
+    margin-top: 10px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+  }
 </style>
 </head>
 <body>
@@ -461,5 +516,16 @@
   </div>
 
 </div>
+<footer class="license-footer">
+  <div class="license-footer-copy">
+    <div class="license-footer-eyebrow">Licensed Freelance Business</div>
+    <h2>Blueprint by ShougTech operates with an official freelance license.</h2>
+    <p>This certificate is included as a credibility reference for clients, collaborators, and businesses reviewing this portfolio presentation.</p>
+  </div>
+  <figure class="license-footer-card">
+    <img src="../../assets/freelance-certificate-license.png" alt="Blueprint by ShougTech freelance certificate license">
+    <figcaption>Official freelance certificate license</figcaption>
+  </figure>
+</footer>
 </body>
 </html>
