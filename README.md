@@ -1,37 +1,57 @@
 # Blueprint HTML Showcase
 
-A curated repository of HTML-based marketing and web showcase projects by **ShougTech / Blueprint**.
+[![Deploy Status](https://github.com/shougalomran/blueprint-html-showcase/actions/workflows/deploy.yml/badge.svg)](https://github.com/shougalomran/blueprint-html-showcase/actions)
 
-## About
-This repository highlights custom HTML/CSS marketing assets, landing pages, promotional web sections, and before/after web transformation case studies.
+A studio-style portfolio repository for HTML-based marketing websites, promotional layouts, redesign case studies, and poster-style landing experiences created under **Blueprint by ShougTech**.
 
-## Focus
-- Marketing landing pages
-- Portfolio-style promotional sites
-- Web redesign showcases
-- Brand-focused HTML experiences
-- Static front-end presentation builds
+## Overview
+
+`blueprint-html-showcase` is structured as a polished front-end portfolio that highlights marketing-focused static web work. It presents each concept as a case study or standalone promotional page, making the repository suitable for client showcases, portfolio reviews, and GitHub Pages publishing.
+
+## Screenshots
+
+Screenshot placeholders can be stored in [`assets/images/`](/Users/shougalomran/Desktop/blueprint-html-showcase/assets/images) and referenced here as the portfolio grows.
+
+Suggested captures:
+
+- Homepage hero and featured work section
+- Glow of Pink before/after transformation page
+- Marketing poster concept layout
 
 ## Featured Projects
+
 ### Glow of Pink
-A before-and-after website transformation case study showing the move from a template storefront to a custom branded website.
+A before-and-after website transformation case study focused on improving brand clarity, layout hierarchy, and conversion-oriented presentation.
 
-### Campaign Poster Concepts
-HTML-based promotional layouts designed for modern product and service marketing.
+Path: [`projects/glow-of-pink/`](/Users/shougalomran/Desktop/blueprint-html-showcase/projects/glow-of-pink)
 
-### Product / Brand Showcase Pages
-Landing pages built to present services, products, and brand identity in a clear and visually engaging way.
+### Marketing Poster
+A promotional HTML/CSS poster concept built to showcase campaign messaging, visual rhythm, and marketing-first composition.
 
-## Tech
+Path: [`projects/marketing-poster/`](/Users/shougalomran/Desktop/blueprint-html-showcase/projects/marketing-poster)
+
+## Technologies Used
+
 - HTML5
 - CSS3
-- JavaScript
-- Static site structure
-- Responsive layout design
+- Responsive design
+- GitHub Actions
+- GitHub Pages
 
-## Purpose
-This repository is intended to showcase design direction, front-end presentation work, and marketing-oriented website builds.
+## Repository Structure
+
+```text
+blueprint-html-showcase/
+├── README.md
+├── index.html
+├── style.css
+├── projects/
+├── assets/
+└── .github/workflows/deploy.yml
+```
 
 ## Author
-**Shoug Alomran**  
-Blueprint by ShougTech
+
+**Blueprint by ShougTech**
+
+Portfolio direction, marketing presentation design, and front-end showcase development by ShougTech.
