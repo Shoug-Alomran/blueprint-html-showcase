@@ -1494,6 +1494,11 @@ h3 {
     gap: calc(var(--phone-space) * 0.85);
   }
 
+  .showcase-grid {
+    grid-template-columns: 1fr !important;
+    align-items: stretch;
+  }
+
   .intro-grid,
   .process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1512,6 +1517,35 @@ h3 {
   .hero-stage,
   .showcase-card-large {
     gap: calc(var(--phone-space) * 0.85);
+  }
+
+  .showcase-card,
+  .showcase-card-large,
+  .showcase-card-wide,
+  .showcase-copy,
+  .showcase-preview {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .showcase-card-large,
+  .showcase-card-wide {
+    display: flex;
+    flex-direction: column;
+    grid-column: auto;
+  }
+
+  .showcase-copy {
+    display: grid;
+    gap: 8px;
+  }
+
+  .showcase-copy .project-tag,
+  .showcase-card .project-tag {
+    display: inline-flex;
+    width: fit-content;
+    max-width: 100%;
+    white-space: normal;
   }
 
   .stage-card,
@@ -1552,6 +1586,13 @@ h3 {
   .project-link + .project-link {
     margin-left: 0;
     margin-top: 8px;
+  }
+
+  .showcase-card .project-link,
+  .showcase-card-large .project-link,
+  .showcase-card-wide .project-link {
+    display: flex;
+    width: 100%;
   }
 
   .project-points {
@@ -1614,6 +1655,11 @@ h3 {
   .gallery-grid-after {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .preview-pane {
+    min-height: clamp(140px, 30svh, 220px);
+    border-radius: var(--phone-radius);
   }
 
   .gallery-grid-before .gallery-shot,
@@ -1792,5 +1838,118 @@ h3 {
     top: -4px;
     left: 0;
     font-size: 0.62rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --phone-space: 9px;
+    --phone-radius: 12px;
+    --phone-copy: 0.8rem;
+    --phone-title: 1.28rem;
+    --phone-section-title: 1rem;
+    --phone-chip: 0.58rem;
+  }
+
+  .page-shell {
+    width: calc(100% - 8px);
+  }
+
+  .hero,
+  .section,
+  .site-footer {
+    padding: 12px 10px;
+  }
+
+  .topbar-links,
+  .intro-grid,
+  .process-grid,
+  .library-links,
+  .showcase-grid,
+  .project-grid,
+  .comparison-snapshot,
+  .compare-layout,
+  .gallery-grid-before,
+  .gallery-grid-after,
+  .device-gallery-grid-tablet,
+  .device-gallery-grid-phone {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-home-grid,
+  .poster-hero-grid,
+  .hero-stage,
+  .showcase-card-large,
+  .showcase-card-wide,
+  .poster-board {
+    grid-template-columns: 1fr !important;
+  }
+
+  .topbar-links a,
+  .button,
+  .project-link {
+    min-height: 36px;
+    font-size: 0.78rem;
+  }
+
+  .project-tag,
+  .stage-kicker,
+  .poster-mini-label,
+  .snapshot-label,
+  .shot-badge,
+  .tablet-showcase-pill,
+  .mobile-gallery-note-kicker {
+    max-width: 100%;
+    padding: 6px 9px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .showcase-card,
+  .showcase-card-large,
+  .showcase-card-wide,
+  .stage-card,
+  .info-card,
+  .library-card,
+  .gallery-card,
+  .compare-panel {
+    padding: 12px 10px;
+  }
+
+  .preview-pane {
+    min-height: 120px;
+  }
+
+  .snapshot-card,
+  .device-frame,
+  .gallery-grid-before .gallery-shot,
+  .gallery-grid-after .gallery-shot {
+    min-height: 0;
+    max-height: 200px;
+  }
+
+  .gallery-grid-before .gallery-shot,
+  .gallery-grid-after .gallery-shot,
+  .snapshot-card,
+  .device-frame {
+    aspect-ratio: 1 / 0.8;
+  }
+
+  .gallery-rail-phone {
+    grid-auto-columns: 132px;
+  }
+
+  .gallery-rail-tablet {
+    grid-auto-columns: 176px;
+  }
+
+  .tablet-shot figcaption,
+  .gallery-copy p,
+  .compare-panel p,
+  .info-card p,
+  .hero-copy,
+  .site-footer-copy p {
+    font-size: 0.8rem;
+    line-height: 1.5;
   }
 }
