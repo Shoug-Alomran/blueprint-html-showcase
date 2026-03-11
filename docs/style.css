@@ -237,6 +237,21 @@ h3 {
   align-items: end;
 }
 
+.hero-home-grid > *,
+.poster-hero-grid > *,
+.hero-stage > *,
+.intro-grid > *,
+.project-grid > *,
+.library-links > *,
+.process-grid > *,
+.showcase-grid > *,
+.poster-layout-grid > *,
+.compare-layout > *,
+.gallery-grid > *,
+.device-gallery-grid > * {
+  min-width: 0;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1360,6 +1375,11 @@ h3 {
 }
 
 @media (max-width: 640px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
   .page-shell {
     width: calc(100% - 16px);
     margin: 8px auto 20px;
@@ -1407,6 +1427,16 @@ h3 {
 
   h2 {
     font-size: clamp(1.6rem, 8vw, 2.2rem);
+  }
+
+  h1,
+  h2,
+  h3,
+  .hero-copy,
+  .gallery-copy p,
+  .compare-panel p,
+  .info-card p {
+    overflow-wrap: anywhere;
   }
 
   .button {
@@ -1534,7 +1564,7 @@ h3 {
 
   .gallery-grid-before,
   .gallery-grid-after {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 12px;
   }
 
@@ -1578,11 +1608,11 @@ h3 {
   }
 
   .gallery-rail-phone {
-    grid-auto-columns: 64%;
+    grid-auto-columns: 58%;
   }
 
   .gallery-rail-tablet {
-    grid-auto-columns: 72%;
+    grid-auto-columns: 66%;
   }
 
   .tablet-showcase-head {
@@ -1612,6 +1642,7 @@ h3 {
   .gallery-rail .tablet-shot,
   .gallery-rail .phone-shot {
     width: 100%;
+    max-width: 100%;
   }
 
   .gallery-rail .device-gallery-shot {
