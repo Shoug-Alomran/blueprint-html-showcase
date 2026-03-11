@@ -121,6 +121,10 @@
           <p class="eyebrow">Device Showcase</p>
           <h2>Organized by laptop, iPad, and iPhone so each screen type is shown at the right scale.</h2>
         </div>
+        <div class="mobile-gallery-note">
+          <span class="mobile-gallery-note-kicker">Touch-Friendly View</span>
+          <p>On phones, selected galleries turn into swipeable rails. Tap any screen to open it, then zoom in for a closer look.</p>
+        </div>
         <div class="gallery-stack">
           <article class="gallery-card gallery-card-before">
             <div class="gallery-copy">
@@ -162,7 +166,7 @@
               <h3>Legacy tablet layouts</h3>
               <p>The original iPad experience shows the earlier storefront structure before the redesign improved hierarchy, navigation, and content rhythm.</p>
             </div>
-            <div class="device-gallery-grid device-gallery-grid-tablet">
+            <div class="device-gallery-grid device-gallery-grid-tablet gallery-rail gallery-rail-tablet">
               <figure class="gallery-shot device-gallery-shot tablet-shot"><span class="shot-badge shot-badge-before">Before</span><img src="../../assets/glow-of-pink/before/iPad-view/home-page-iPad.png" alt="Glow of Pink before redesign homepage on iPad" /></figure>
               <figure class="gallery-shot device-gallery-shot tablet-shot"><span class="shot-badge shot-badge-before">Before</span><img src="../../assets/glow-of-pink/before/iPad-view/home-page-welcom-iPad-view.png" alt="Glow of Pink before redesign welcome page on iPad" /></figure>
               <figure class="gallery-shot device-gallery-shot tablet-shot"><span class="shot-badge shot-badge-before">Before</span><img src="../../assets/glow-of-pink/before/iPad-view/cart-view-iPad.png" alt="Glow of Pink before redesign cart page on iPad" /></figure>
@@ -176,7 +180,7 @@
               <h3>Refined tablet experience</h3>
               <p>The updated iPad views show cleaner navigation, more polished product presentation, and a storefront flow that feels more custom and editorial.</p>
             </div>
-            <div class="device-gallery-grid device-gallery-grid-tablet">
+            <div class="device-gallery-grid device-gallery-grid-tablet gallery-rail gallery-rail-tablet">
               <figure class="gallery-shot device-gallery-shot tablet-shot"><span class="shot-badge shot-badge-after">After</span><img src="../../assets/glow-of-pink/after/iPad-view/home-page-iPad-view.jpg" alt="Glow of Pink after redesign homepage on iPad" /></figure>
               <figure class="gallery-shot device-gallery-shot tablet-shot"><span class="shot-badge shot-badge-after">After</span><img src="../../assets/glow-of-pink/after/iPad-view/welcome-page-iPad-view.jpg" alt="Glow of Pink after redesign welcome page on iPad" /></figure>
               <figure class="gallery-shot device-gallery-shot tablet-shot"><span class="shot-badge shot-badge-after">After</span><img src="../../assets/glow-of-pink/after/iPad-view/sliding-navigation-iPad-view.jpg" alt="Glow of Pink after redesign sliding navigation on iPad" /></figure>
@@ -198,7 +202,7 @@
               <h3>Original mobile storefront</h3>
               <p>The pre-redesign mobile screens show the earlier navigation and product flow before the experience was tightened for smaller screens.</p>
             </div>
-            <div class="device-gallery-grid device-gallery-grid-phone">
+            <div class="device-gallery-grid device-gallery-grid-phone gallery-rail gallery-rail-phone">
               <figure class="gallery-shot device-gallery-shot phone-shot"><span class="shot-badge shot-badge-before">Before</span><img src="../../assets/glow-of-pink/before/phone-view/home-page-phone-view.jpg" alt="Glow of Pink before redesign homepage on phone" /></figure>
               <figure class="gallery-shot device-gallery-shot phone-shot"><span class="shot-badge shot-badge-before">Before</span><img src="../../assets/glow-of-pink/before/phone-view/side-navigation-phone.jpg" alt="Glow of Pink before redesign side navigation on phone" /></figure>
               <figure class="gallery-shot device-gallery-shot phone-shot"><span class="shot-badge shot-badge-before">Before</span><img src="../../assets/glow-of-pink/before/phone-view/product-display-phone-view.jpg" alt="Glow of Pink before redesign product display on phone" /></figure>
@@ -215,7 +219,7 @@
               <h3>Refined mobile browsing</h3>
               <p>The redesigned phone screens emphasize clearer sections, improved navigation, and a stronger mobile-first storefront experience.</p>
             </div>
-            <div class="device-gallery-grid device-gallery-grid-phone">
+            <div class="device-gallery-grid device-gallery-grid-phone gallery-rail gallery-rail-phone">
               <figure class="gallery-shot device-gallery-shot phone-shot"><span class="shot-badge shot-badge-after">After</span><img src="../../assets/glow-of-pink/after/phone-view/home-page-phone-view.jpg" alt="Glow of Pink after redesign homepage on phone" /></figure>
               <figure class="gallery-shot device-gallery-shot phone-shot"><span class="shot-badge shot-badge-after">After</span><img src="../../assets/glow-of-pink/after/phone-view/welcome-page-phone-view.jpg" alt="Glow of Pink after redesign welcome page on phone" /></figure>
               <figure class="gallery-shot device-gallery-shot phone-shot"><span class="shot-badge shot-badge-after">After</span><img src="../../assets/glow-of-pink/after/phone-view/sliding-navigation-phone-view.jpg" alt="Glow of Pink after redesign sliding navigation on phone" /></figure>
@@ -245,6 +249,7 @@
     <div class="lightbox" id="image-lightbox" hidden>
       <button class="lightbox-nav lightbox-nav-prev" type="button" aria-label="View previous image">Prev</button>
       <button class="lightbox-nav lightbox-nav-next" type="button" aria-label="View next image">Next</button>
+      <button class="lightbox-zoom" type="button" aria-label="Zoom image">Zoom</button>
       <button class="lightbox-close" type="button" aria-label="Close expanded image">Close</button>
       <div class="lightbox-stage">
         <div class="lightbox-badge" aria-live="polite"></div>
@@ -259,10 +264,13 @@
       const closeButton = lightbox.querySelector(".lightbox-close");
       const prevButton = lightbox.querySelector(".lightbox-nav-prev");
       const nextButton = lightbox.querySelector(".lightbox-nav-next");
+      const zoomButton = lightbox.querySelector(".lightbox-zoom");
+      const lightboxStage = lightbox.querySelector(".lightbox-stage");
       const expandableImages = Array.from(document.querySelectorAll(
         ".snapshot-card img, .device-frame img, .gallery-shot img"
       ));
       let currentImageIndex = -1;
+      let isZoomed = false;
 
       function getImageBadge(image) {
         const badge = image.closest("figure, article")?.querySelector(".shot-badge, .snapshot-label");
@@ -276,10 +284,18 @@
         }
 
         currentImageIndex = index;
+        setZoom(false);
         lightboxImage.src = image.getAttribute("src");
         lightboxImage.alt = image.alt;
         lightboxBadge.textContent = getImageBadge(image);
         lightboxBadge.hidden = lightboxBadge.textContent === "";
+      }
+
+      function setZoom(nextState) {
+        isZoomed = nextState;
+        lightboxStage.classList.toggle("is-zoomed", isZoomed);
+        zoomButton.textContent = isZoomed ? "Fit" : "Zoom";
+        zoomButton.setAttribute("aria-pressed", String(isZoomed));
       }
 
       function openLightbox(image) {
@@ -297,6 +313,7 @@
         lightboxImage.alt = "";
         lightboxBadge.textContent = "";
         currentImageIndex = -1;
+        setZoom(false);
         document.body.classList.remove("lightbox-open");
       }
 
@@ -327,11 +344,17 @@
       closeButton.addEventListener("click", closeLightbox);
       prevButton.addEventListener("click", () => showNextImage(-1));
       nextButton.addEventListener("click", () => showNextImage(1));
+      zoomButton.addEventListener("click", () => setZoom(!isZoomed));
 
       lightbox.addEventListener("click", (event) => {
         if (event.target === lightbox || event.target.classList.contains("lightbox-stage")) {
           closeLightbox();
         }
+      });
+
+      lightboxImage.addEventListener("click", (event) => {
+        event.stopPropagation();
+        setZoom(!isZoomed);
       });
 
       document.addEventListener("keydown", (event) => {
@@ -346,9 +369,14 @@
         if (event.key === "ArrowRight" && !lightbox.hidden) {
           showNextImage(1);
         }
+
+        if (event.key.toLowerCase() === "z" && !lightbox.hidden) {
+          setZoom(!isZoomed);
+        }
       });
 
       lightbox.setAttribute("aria-hidden", "true");
+      zoomButton.setAttribute("aria-pressed", "false");
     </script>
   </body>
 </html>
