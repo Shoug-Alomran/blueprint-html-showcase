@@ -22,6 +22,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -1375,67 +1377,76 @@ h3 {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --phone-space: clamp(8px, 2.8vw, 12px);
+    --phone-radius: clamp(12px, 3.8vw, 16px);
+    --phone-copy: clamp(0.78rem, 3.2vw, 0.9rem);
+    --phone-title: clamp(1.35rem, 6.6vw, 2rem);
+    --phone-section-title: clamp(1.02rem, 4.8vw, 1.4rem);
+    --phone-chip: clamp(0.6rem, 2.5vw, 0.72rem);
+  }
+
   html,
   body {
     overflow-x: clip;
   }
 
   .page-shell {
-    width: calc(100% - 12px);
-    margin: 6px auto 16px;
+    width: calc(100% - (var(--phone-space) * 1));
+    margin: 4px auto 12px;
   }
 
   .hero,
   .section,
   .site-footer {
-    padding: 14px 12px;
-    border-radius: 16px;
+    padding: calc(var(--phone-space) * 1.15) var(--phone-space);
+    border-radius: var(--phone-radius);
   }
 
   .topbar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: calc(var(--phone-space) * 0.8);
+    margin-bottom: calc(var(--phone-space) * 1.5);
   }
 
   .brand {
-    font-size: 0.78rem;
+    font-size: clamp(0.72rem, 2.7vw, 0.82rem);
   }
 
   .topbar-links {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    gap: calc(var(--phone-space) * 0.65);
   }
 
   .topbar-links a {
     width: 100%;
     text-align: center;
-    min-height: 38px;
+    min-height: clamp(34px, 9vw, 40px);
     padding: 8px 10px;
-    font-size: 0.82rem;
+    font-size: clamp(0.74rem, 2.9vw, 0.84rem);
   }
 
   .hero-copy {
-    font-size: 0.88rem;
-    margin-top: 12px;
+    font-size: var(--phone-copy);
+    margin-top: calc(var(--phone-space) * 0.9);
     line-height: 1.55;
   }
 
   h1 {
-    font-size: clamp(1.55rem, 8.2vw, 2.25rem);
+    font-size: var(--phone-title);
     line-height: 1.08;
   }
 
   h2 {
-    font-size: clamp(1.22rem, 6.4vw, 1.7rem);
+    font-size: var(--phone-section-title);
     line-height: 1.12;
   }
 
   h3 {
-    font-size: 0.98rem;
+    font-size: clamp(0.9rem, 3.7vw, 1.02rem);
     margin-bottom: 8px;
   }
 
@@ -1445,7 +1456,7 @@ h3 {
   .poster-mini-label,
   .snapshot-label,
   .shot-badge {
-    font-size: 0.64rem;
+    font-size: var(--phone-chip);
     letter-spacing: 0.08em;
   }
 
@@ -1455,28 +1466,38 @@ h3 {
   .hero-copy,
   .gallery-copy p,
   .compare-panel p,
-  .info-card p {
+  .info-card p,
+  .tablet-showcase-note {
     overflow-wrap: anywhere;
+  }
+
+  .gallery-copy p,
+  .compare-panel p,
+  .info-card p,
+  .site-footer-copy p,
+  .tablet-showcase-note {
+    font-size: var(--phone-copy);
+    line-height: 1.55;
   }
 
   .button {
     width: 100%;
-    min-height: 44px;
+    min-height: clamp(40px, 10vw, 44px);
     padding: 0 14px;
-    font-size: 0.9rem;
+    font-size: clamp(0.82rem, 3.2vw, 0.92rem);
   }
 
   .hero-actions,
   .library-links,
   .showcase-grid,
   .preview-stack {
-    gap: 10px;
+    gap: calc(var(--phone-space) * 0.85);
   }
 
   .intro-grid,
   .process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: calc(var(--phone-space) * 0.85);
   }
 
   .intro-grid > :last-child,
@@ -1490,7 +1511,7 @@ h3 {
 
   .hero-stage,
   .showcase-card-large {
-    gap: 10px;
+    gap: calc(var(--phone-space) * 0.85);
   }
 
   .stage-card,
@@ -1499,7 +1520,7 @@ h3 {
   .library-card,
   .license-card,
   .stage-metric {
-    border-radius: 14px;
+    border-radius: var(--phone-radius);
   }
 
   .stage-card,
@@ -1507,7 +1528,7 @@ h3 {
   .info-card,
   .library-card,
   .stage-metric {
-    padding: 14px;
+    padding: calc(var(--phone-space) * 1.1);
   }
 
   .stage-card,
@@ -1518,14 +1539,14 @@ h3 {
   }
 
   .stage-metric strong {
-    font-size: clamp(1.55rem, 10vw, 2.2rem);
+    font-size: clamp(1.35rem, 8vw, 1.9rem);
   }
 
   .project-link {
     width: 100%;
-    min-height: 40px;
+    min-height: clamp(36px, 9vw, 40px);
     padding: 8px 12px;
-    font-size: 0.85rem;
+    font-size: clamp(0.76rem, 3vw, 0.86rem);
   }
 
   .project-link + .project-link {
@@ -1537,7 +1558,7 @@ h3 {
     margin: 12px 0 14px;
     padding-left: 14px;
     line-height: 1.55;
-    font-size: 0.88rem;
+    font-size: var(--phone-copy);
   }
 
   .library-card {
@@ -1554,7 +1575,7 @@ h3 {
     gap: 8px;
     margin-top: 12px;
     padding: 12px;
-    border-radius: 14px;
+    border-radius: var(--phone-radius);
   }
 
   .license-card {
@@ -1570,11 +1591,11 @@ h3 {
   .gallery-shot,
   .compare-panel,
   .gallery-card {
-    border-radius: 14px;
+    border-radius: var(--phone-radius);
   }
 
   .compare-layout {
-    gap: 10px;
+    gap: calc(var(--phone-space) * 0.85);
   }
 
   .compare-panel {
@@ -1593,6 +1614,34 @@ h3 {
   .gallery-grid-after {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .gallery-grid-before .gallery-shot,
+  .gallery-grid-after .gallery-shot {
+    aspect-ratio: 1 / 0.78;
+    max-height: min(40svh, 260px);
+    overflow: hidden;
+  }
+
+  .gallery-grid-before .gallery-shot img,
+  .gallery-grid-after .gallery-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .snapshot-card,
+  .device-frame {
+    min-height: clamp(180px, 42svh, 300px);
+  }
+
+  .device-frame img,
+  .snapshot-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
   }
 
   .gallery-grid-before .tall-shot,
@@ -1635,17 +1684,17 @@ h3 {
   }
 
   .gallery-rail-phone {
-    grid-auto-columns: 48%;
+    grid-auto-columns: clamp(132px, 42vw, 176px);
   }
 
   .gallery-rail-tablet {
-    grid-auto-columns: 56%;
+    grid-auto-columns: clamp(180px, 56vw, 240px);
   }
 
   .tablet-showcase-head {
     margin-bottom: 14px;
     padding: 14px;
-    border-radius: 18px;
+    border-radius: var(--phone-radius);
   }
 
   .tablet-showcase-pill-row {
@@ -1653,12 +1702,12 @@ h3 {
   }
 
   .tablet-showcase-pill {
-    font-size: 0.7rem;
+    font-size: var(--phone-chip);
   }
 
   .tablet-shot figcaption {
     padding: 10px 12px 12px;
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 2.8vw, 0.8rem);
   }
 
   .gallery-rail > * {
