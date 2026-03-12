@@ -959,28 +959,28 @@ h3 {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .page-shell {
-    width: calc(100% - 16px);
-    margin: 8px auto 20px;
+    width: min(100% - 20px, 100%);
+    margin: 10px auto 20px;
   }
 
   .hero,
   .section,
   .site-footer {
     padding: 20px 16px;
-    border-radius: 20px;
+    border-radius: 22px;
   }
 
   .topbar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 32px;
+    gap: 12px;
+    margin-bottom: 28px;
   }
 
   .brand {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
   }
 
   .topbar-links {
@@ -990,150 +990,98 @@ h3 {
     gap: 10px;
   }
 
-  .topbar-links a {
+  .topbar-links a,
+  .button,
+  .project-link {
     width: 100%;
-    text-align: center;
+    min-height: 44px;
   }
 
-  .hero-copy {
-    font-size: 0.98rem;
-    margin-top: 16px;
+  .hero-actions {
+    gap: 12px;
+    margin-top: 24px;
   }
 
   h1 {
-    font-size: clamp(2.15rem, 11vw, 3.4rem);
-    line-height: 1.05;
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1.06;
   }
 
   h2 {
-    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    font-size: clamp(1.55rem, 7vw, 2.1rem);
   }
 
-  .button {
-    width: 100%;
+  h3 {
+    font-size: 1.02rem;
   }
 
-  .hero-actions,
-  .library-links,
-  .process-grid,
-  .showcase-grid,
-  .preview-stack {
-    gap: 12px;
+  .hero-copy,
+  .info-card p,
+  .library-card span,
+  .site-footer-copy p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
   }
 
-  .preview-stack {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(58vw, 1fr);
-    overflow-x: auto;
-    overflow-y: visible;
-    scroll-snap-type: x mandatory;
+  .storefront-chip-row,
+  .card-meta-row {
+    gap: 8px;
+  }
+
+  .storefront-chip,
+  .card-meta-chip,
+  .library-card-kicker,
+  .project-tag,
+  .stage-kicker {
+    max-width: 100%;
+    padding: 7px 10px;
+    font-size: 0.66rem;
+    line-height: 1.2;
+    white-space: normal;
   }
 
   .showcase-grid {
     display: grid;
+    grid-template-columns: none;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(84vw, 84vw);
-    align-items: stretch;
+    grid-auto-columns: minmax(86vw, 86vw);
+    gap: 14px;
     overflow-x: auto;
-    overflow-y: visible;
-    padding-bottom: 8px;
-    margin-inline: -2px;
-    padding-inline: 2px;
-    scroll-snap-type: x mandatory;
+    overflow-y: hidden;
+    padding: 4px 2px 10px;
+    margin: 20px -2px 0;
+    scroll-snap-type: x proximity;
     overscroll-behavior-x: contain;
+  }
+
+  .showcase-grid > * {
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .showcase-card,
+  .showcase-card-large,
+  .showcase-card-wide {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 20px;
   }
 
   .hero-stage,
   .showcase-card-large {
-    gap: 12px;
+    gap: 14px;
   }
 
-  .stage-card,
-  .showcase-card,
-  .info-card,
-  .library-card,
-  .license-card,
-  .stage-metric {
-    border-radius: 18px;
+  .preview-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
-  .stage-card,
-  .showcase-card,
-  .info-card,
-  .library-card,
-  .stage-metric {
-    padding: 20px;
-  }
-
-  .stage-card,
-  .stage-metric,
-  .preview-pane,
-  .section-split .library-card {
-    min-height: 0;
-  }
-
-  .showcase-grid > *,
-  .preview-stack > *,
-  .library-links > * {
-    scroll-snap-align: start;
-  }
-
-  .showcase-card-featured {
-    min-height: 100%;
-  }
-
-  .showcase-card-compact {
-    justify-content: space-between;
-  }
-
-  .stage-metric strong {
-    font-size: clamp(2rem, 13vw, 3rem);
-  }
-
-  .project-link {
-    width: 100%;
-  }
-
-  .project-link + .project-link {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-
-  .project-points {
-    margin: 16px 0 18px;
-    padding-left: 16px;
-    line-height: 1.7;
-  }
-
-  .library-card {
-    padding: 18px;
-  }
-
-  .library-card-kicker,
-  .storefront-chip,
-  .card-meta-chip {
-    font-size: 0.68rem;
-    padding: 7px 10px;
-  }
-
-  .site-footer {
-    gap: 18px;
-  }
-
-  .license-card {
-    padding: 12px;
-  }
-
-  .license-card img {
-    max-height: none;
-  }
-
-  .snapshot-card,
-  .device-frame,
-  .gallery-shot,
-  .compare-panel,
-  .gallery-card {
+  .preview-pane {
+    min-height: 180px;
     border-radius: 18px;
   }
 
@@ -1144,20 +1092,94 @@ h3 {
     background-position: top center;
   }
 
-  .showcase-grid::-webkit-scrollbar,
-  .preview-stack::-webkit-scrollbar {
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .process-grid > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .library-links {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stage-card,
+  .stage-metric,
+  .showcase-card,
+  .info-card,
+  .library-card,
+  .license-card {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .stage-metric strong {
+    font-size: clamp(2rem, 13vw, 3rem);
+  }
+
+  .project-link + .project-link {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .project-points {
+    margin: 14px 0 18px;
+    padding-left: 16px;
+    line-height: 1.65;
+  }
+
+  .license-card img {
+    max-height: none;
+  }
+
+  .showcase-grid::-webkit-scrollbar {
     height: 10px;
   }
 
-  .showcase-grid::-webkit-scrollbar-track,
-  .preview-stack::-webkit-scrollbar-track {
+  .showcase-grid::-webkit-scrollbar-track {
     background: rgba(31, 36, 48, 0.08);
     border-radius: 999px;
   }
 
-  .showcase-grid::-webkit-scrollbar-thumb,
-  .preview-stack::-webkit-scrollbar-thumb {
+  .showcase-grid::-webkit-scrollbar-thumb {
     background: rgba(211, 111, 67, 0.38);
     border-radius: 999px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-shell {
+    width: calc(100% - 12px);
+    margin: 6px auto 14px;
+  }
+
+  .hero,
+  .section,
+  .site-footer {
+    padding: 16px 12px;
+    border-radius: 18px;
+  }
+
+  .showcase-grid {
+    grid-auto-columns: calc(100vw - 36px);
+  }
+
+  .preview-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-pane {
+    min-height: 150px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid > :last-child {
+    grid-column: auto;
   }
 }
